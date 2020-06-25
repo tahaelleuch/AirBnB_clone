@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import uuid
 from datetime import datetime
 """
@@ -8,7 +9,7 @@ description de la classe  de base
 class BaseModel:
     def __init__(self):
         """ constructeur parametré"""
-        self.id = uuid.uuid4()
+        self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
@@ -21,10 +22,10 @@ class BaseModel:
         """ update de update_at"""
         self.updated_at = datetime.now()
 
-    def todict(self):
+    def to_dict(self):
         """ dictionnaire contient toutes les cases"""
         nouveaudictionaire = dict(self.__dict__)
         nouveaudictionaire["__class__"] = self.__class__.__name__
-        nouveaudictionaire["create_at"] = self.created_at.isoformat()
+        nouveaudictionaire["created_at"] = self.created_at.isoformat()
         nouveaudictionaire["updated_at"] = self.updated_at.isoformat()
         return (nouveaudictionaire)
