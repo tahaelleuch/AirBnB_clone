@@ -2,6 +2,7 @@
 import json
 import os.path
 from models.base_model import BaseModel
+from models.user import User
 """
 classe de stockage dans un fichier json
 """
@@ -11,6 +12,9 @@ class FileStorage:
     """ constructeur prametré """
     __file_path = "file.json"
     __objects = {}
+    class_name = {"BaseModel": BaseModel
+                  "User": User
+                  }
 
     def all(self):
         """ retourne un objet  de dictionaire"""
@@ -39,6 +43,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 json_objects = json.load(f)
             for key in json_objects:
-                self.__objects[key] = BaseModel(**json_objects[key])
+                self.__objects[key] = class_name(**json_objects[key])
         except:
             pass

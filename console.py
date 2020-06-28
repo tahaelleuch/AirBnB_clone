@@ -5,12 +5,15 @@ import cmd
 import models
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """Class to define consol's command"""
 
     prompt = "(hbnb) "
-    class_name = {"BaseModel": BaseModel}
+    class_name = {"BaseModel": BaseModel
+                  "User": User
+                  }
 
     def do_EOF(self, arg):
         """EOF to exit the program"""
