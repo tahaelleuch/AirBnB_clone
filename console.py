@@ -11,8 +11,13 @@ class HBNBCommand(cmd.Cmd):
     """Class to define consol's command"""
 
     prompt = "(hbnb) "
-    class_name = {"BaseModel": BaseModel
-                  "User": User
+    class_name = {"BaseModel": BaseModel,
+                  "User": User,
+                  "State": State,
+                  "City": City,
+                  "Amenity": Amenity,
+                  "Place": Place,
+                  "Review": Review
                   }
 
     def do_EOF(self, arg):
