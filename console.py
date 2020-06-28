@@ -10,7 +10,7 @@ class HBNBCommand(cmd.Cmd):
     """Class to define consol's command"""
 
     prompt = "(hbnb) "
-    class_name = ["BaseModel"]
+    class_name = {"BaseModel": BaseModel}
 
     def do_EOF(self, arg):
         """EOF to exit the program"""
@@ -20,12 +20,8 @@ class HBNBCommand(cmd.Cmd):
         """(quit) to exit the program"""
         return True
 
-    def do_help(self, arg: str):
-        """Get help"""
-        return True
-
     def emptyline(self):
-        """empty line + ENTER shouldn’t execute anything"""
+        """empty line + ENTER shouldnt execute anything"""
         return False
 
     def do_create(self, arg):
@@ -38,10 +34,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         else:
-            models.storage.reload()
-            new_inst = eval(args[0])()
-            new_inst.storage.save()
-            print(new_inst.id)
+            if args[0] in HBNBCommand.class_name:
+                models.storage.reload()
+                new_inst = HBNBCommand.class_name[args[0]]()
+                new_inst.save()
+                print(new_inst.id)
 
     def do_show(self, arg):
         """Prints the string representation of an instance
@@ -77,25 +74,24 @@ class HBNBCommand(cmd.Cmd):
             if index not in alls:
                 print("** no instance found **")
             else:
-                for key, values in alls.items():
-                    if key is index:
-                        del(alls[key])
-                        models.storage.save()
+                if index in alls:
+                    alls.pop(index)
+                models.storage.save()
 
     def do_all(self, arg):
         """Prints all string representation of all instances
         based or not on the class name
         """
         args = arg.split()
-        if args[0] not in HBNBCommand.class_name:
-            print("** class doesn't exist **")
-            return
         pr_list = []
         models.storage.reload()
         if len(args) == 0:
             for key, values in models.storage.all().items():
                 pr_list.append(str(values))
         else:
+            if args[0] not in HBNBCommand.class_name:
+                print("** class doesn't exist **")
+                return
             if args[0] in HBNBCommand.class_name:
                 for key, values in models.storage.all().items():
                     if values.__class__.__name__ == args[0]:

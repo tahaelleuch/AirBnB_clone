@@ -29,7 +29,6 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-            models.storage.save()
 
     def __str__(self):
         """ fonction daffichage """
@@ -46,5 +45,8 @@ class BaseModel:
         nouveaudictionaire = dict(self.__dict__)
         nouveaudictionaire["__class__"] = self.__class__.__name__
         nouveaudictionaire["created_at"] = self.created_at.isoformat()
-        nouveaudictionaire["updated_at"] = self.updated_at.isoformat()
+        if type(nouveaudictionaire["updated_at"]) is str:
+            nouveaudictionaire["updated_at"] = self.updated_at
+        else:
+            nouveaudictionaire["updated_at"] = self.updated_at.isoformat()
         return (nouveaudictionaire)
