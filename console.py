@@ -156,10 +156,19 @@ class HBNBCommand(cmd.Cmd):
         """special command lineS"""
         cmd_all = arg.split('.')
         if (len(cmd_all) == 2):
-            if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "all()":
-                self.do_all(cmd_all[0])
-            if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "count()":
-                self.do_count(cmd_all[0])
+            if cmd_all[1].find("()") != -1:
+                print(cmd_all[1].find("()"))
+                if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "all()":
+                    self.do_all(cmd_all[0])
+                if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "count()":
+                    self.do_count(cmd_all[0])
+            else:
+                begin = cmd_all[1].find('(')
+                end = (cmd_all[1].find(')')) + 1
+                the_id = cmd_all[1][begin + 2:end - 2]
+                the_command = cmd_all[1][0:begin]
+                if cmd_all[0] in HBNBCommand.class_name and the_command == "show":
+                    self.do_show(cmd_all[0] + ' ' + the_id)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
