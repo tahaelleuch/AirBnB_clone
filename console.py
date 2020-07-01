@@ -157,7 +157,6 @@ class HBNBCommand(cmd.Cmd):
         cmd_all = arg.split('.')
         if (len(cmd_all) == 2):
             if cmd_all[1].find("()") != -1:
-                print(cmd_all[1].find("()"))
                 if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "all()":
                     self.do_all(cmd_all[0])
                 if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "count()":
@@ -169,6 +168,8 @@ class HBNBCommand(cmd.Cmd):
                 the_command = cmd_all[1][0:begin]
                 if cmd_all[0] in HBNBCommand.class_name and the_command == "show":
                     self.do_show(cmd_all[0] + ' ' + the_id)
+                if cmd_all[0] in HBNBCommand.class_name and the_command == "destroy":
+                    self.do_destroy(cmd_all[0] + ' ' + the_id)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
