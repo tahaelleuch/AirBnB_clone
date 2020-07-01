@@ -13,6 +13,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.city import City
 
+
 class HBNBCommand(cmd.Cmd):
     """Class to define consol's command"""
 
@@ -157,9 +158,11 @@ class HBNBCommand(cmd.Cmd):
         cmd_all = arg.split('.')
         if (len(cmd_all) == 2):
             if cmd_all[1].find("()") != -1:
-                if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "all()":
+                if cmd_all[0] in HBNBCommand.class_name \
+                        and cmd_all[1] == "all()":
                     self.do_all(cmd_all[0])
-                if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "count()":
+                if cmd_all[0] in HBNBCommand.class_name \
+                        and cmd_all[1] == "count()":
                     self.do_count(cmd_all[0])
             else:
                 begin = cmd_all[1].find('(')
@@ -167,19 +170,23 @@ class HBNBCommand(cmd.Cmd):
                 the_values = cmd_all[1][begin+1:end-1]
                 the_id = cmd_all[1][begin + 2:end - 2]
                 the_command = cmd_all[1][0:begin]
-                if cmd_all[0] in HBNBCommand.class_name and the_command == "show":
+                if cmd_all[0] in HBNBCommand.class_name \
+                        and the_command == "show":
                     self.do_show(cmd_all[0] + ' ' + the_id)
                     return
-                if cmd_all[0] in HBNBCommand.class_name and the_command == "destroy":
+                if cmd_all[0] in HBNBCommand.class_name \
+                        and the_command == "destroy":
                     self.do_destroy(cmd_all[0] + ' ' + the_id)
                     return
                 if the_values.find(", ") != -1:
                     all_values = the_values.split(", ")
                     for i in all_values:
                         i = i[1:-1]
-                if cmd_all[0] in HBNBCommand.class_name and the_command == "update":
-                    self.do_update(cmd_all[0] + ' ' + all_values[0]
-                                  + ' ' + all_values[1] + ' "' + all_values[2] + '"')
+                if cmd_all[0] in HBNBCommand.class_name \
+                        and the_command == "update":
+                    self.do_update(cmd_all[0] + ' ' + all_values[0] +
+                                   ' ' + all_values[1] +
+                                   ' "' + all_values[2] + '"')
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
