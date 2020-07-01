@@ -19,6 +19,10 @@ class testAmenity(unittest.TestCase):
         """ tests de type de id en classe public"""
         self.assertEqual(str, type(State().id))
 
+    def test_str_name(self):
+        """ tests de type de id en classe public"""
+        self.assertEqual(str, type(State().name))
+
     def test_date_creation(self):
         """ verification date de creation"""
         self.assertEqual(datetime, type(State().created_at))

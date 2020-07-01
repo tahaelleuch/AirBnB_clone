@@ -24,3 +24,7 @@ class testAmenity(unittest.TestCase):
     def test_str_id(self):
         """ tests de type de id en classe public"""
         self.assertEqual(str, type(Amenity().id))
+
+    def test_str_name(self):
+        """ tests de type de id en classe public"""
+        self.assertEqual(str, type(Amenity().name))
