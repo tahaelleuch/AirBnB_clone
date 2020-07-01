@@ -6,12 +6,12 @@ import models
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.user import User
 from models.state import State
 from models.place import Place
 from models.review import Review
 from models.amenity import Amenity
 from models.city import City
-
 
 class HBNBCommand(cmd.Cmd):
     """Class to define consol's command"""
@@ -98,7 +98,6 @@ class HBNBCommand(cmd.Cmd):
         """
         args = arg.split()
         pr_list = []
-        models.storage.reload()
         if len(args) == 0:
             for key, values in models.storage.all().items():
                 pr_list.append(str(values))
@@ -138,12 +137,29 @@ class HBNBCommand(cmd.Cmd):
                     setattr(alls[index], args[2], args[3])
                     models.storage.all()[index].save()
 
+    def do_count(self, arg):
+        """Get the  the number of instances of a class"""
+        args = arg.split(" ")
+        i = 0
+        if args[0] not in HBNBCommand.class_name:
+            print("** class doesn't exist **")
+        elif args[0] is not None:
+            alls = models.storage.all()
+            names = [""]
+            for key in alls:
+                names = key.split(".", 1)
+                if names[0] == args[0]:
+                    i += 1
+        print(i)
+
     def default(self, arg):
         """special command lineS"""
         cmd_all = arg.split('.')
         if (len(cmd_all) == 2):
             if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "all()":
                 self.do_all(cmd_all[0])
+            if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "count()":
+                self.do_count(cmd_all[0])
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
