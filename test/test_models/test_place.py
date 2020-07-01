@@ -3,7 +3,7 @@
 test pour la classe place
 """
 import unittest
-from models.city import Place
+from models.place import Place
 import models
 
 
