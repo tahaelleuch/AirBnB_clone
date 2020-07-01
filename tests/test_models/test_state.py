@@ -4,7 +4,6 @@ tests pour la classe state
 """
 import unittest
 from models.state import State
-import models
 from datetime import datetime
 
 
@@ -22,4 +21,4 @@ class testAmenity(unittest.TestCase):
 
     def test_date_creation(self):
         """ verification date de creation"""
-        self.assertEqual(datetime, type(state().created_at))
+        self.assertEqual(datetime, type(State().created_at))
