@@ -14,11 +14,13 @@ class BaseModel:
             for cle, valeur in kwargs.items():
                 if cle == "__class__":
                     pass
-                elif ((cle == "created_at") and isinstance(kwargs["created_at"], str)):
+                elif ((cle == "created_at") and
+                      isinstance(kwargs["created_at"], str)):
                     self.created_at = datetime.strptime(
                         kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
                     continue
-                elif (cle is "updated_at") and isinstance(kwargs["updated_at"], str):
+                elif (cle is "updated_at") and \
+                        isinstance(kwargs["updated_at"], str):
                     self.updated_at = datetime.strptime(
                         kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
                     continue
