@@ -3,6 +3,12 @@ import json
 import os.path
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
 """
 classe de stockage dans un fichier json
 """
@@ -37,7 +43,7 @@ class FileStorage:
         """serializé les objet en json"""
         dic_object = {}
         for key, value in self.__objects.items():
-            dic_object[key] = value.to_dict()	
+            dic_object[key] = value.to_dict()
         with open(self.__file_path, mode='w') as fichier:
             json.dump(dic_object, fichier)
 
