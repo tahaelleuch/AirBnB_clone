@@ -138,5 +138,12 @@ class HBNBCommand(cmd.Cmd):
                     setattr(alls[index], args[2], args[3])
                     models.storage.all()[index].save()
 
+    def default(self, arg):
+        """special command lineS"""
+        cmd_all = arg.split('.')
+        if (len(cmd_all) == 2):
+            if cmd_all[0] in HBNBCommand.class_name and cmd_all[1] == "all()":
+                self.do_all(cmd_all[0])
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
