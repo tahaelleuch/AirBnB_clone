@@ -30,6 +30,18 @@ class testAmenity(unittest.TestCase):
         """ tests type de mail """
         self.assertEqual(str, type(User.email))
 
+    def test_pswd(self):
+        """ tests type de mail """
+        self.assertEqual(str, type(User.password))
+
+    def test_nom_user(self):
+        """ tests type de mail """
+        self.assertEqual(str, type(User.first_name))
+
+    def test_prenom_user(self):
+        """ tests type de mail """
+        self.assertEqual(str, type(User.last_name))
+
     def test_date_creation(self):
         """ verification date de creation"""
         self.assertEqual(datetime, type(User().created_at))
