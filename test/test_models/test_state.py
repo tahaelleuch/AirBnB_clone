@@ -5,6 +5,7 @@ test pour la classe state
 import unittest
 from models.state import state
 import models
+from datetime import datetime
 
 
 class testAmenity(unittest.TestCase):
