@@ -98,7 +98,6 @@ class HBNBCommand(cmd.Cmd):
         """
         args = arg.split()
         pr_list = []
-        models.storage.reload()
         if len(args) == 0:
             for key, values in models.storage.all().items():
                 pr_list.append(str(values))
@@ -140,17 +139,18 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, arg):
         """Get the  the number of instances of a class"""
-        args = arg.split()
+        args = arg.split(" ")
         i = 0
         if args[0] not in HBNBCommand.class_name:
             print("** class doesn't exist **")
-        else:
+        elif args[0] is not None:
             alls = models.storage.all()
+            names = [""]
             for key in alls:
-                names = key.split('.')
-            if names[0] == args[0]:
-                counter += 1
-            print(counter)
+                names = key.split(".", 1)
+                if names[0] == args[0]:
+                    i += 1
+        print(i)
 
     def default(self, arg):
         """special command lineS"""
