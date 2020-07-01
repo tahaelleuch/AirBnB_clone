@@ -13,13 +13,13 @@ class testbase(unittest.TestCase):
     """ descriptiond du tests"""
     def test_attributes(self):
         """verification des attributs"""
-    base1 = BaseModel()
-    base2 = BaseModel()
-    self.assertTrue(isinstance(base1, BaseModel))
-    self.assertEqual(str, type(BaseModel().id))
-    self.assertNotEqual(base1.id, base2.id)
-    self.assertTrue(isinstance(base1.created_at, datetime))
-    self.assertTrue(isinstance(base2.updated_at, datetime))
-    base1.name = "tests"
-    self.assertEqual(base1.name, "tests")
-    self.assertTrue(type(base1.to_dict()), dict)
+        base1 = BaseModel()
+        base2 = BaseModel()
+        self.assertTrue(isinstance(base1, BaseModel))
+        self.assertEqual(str, type(BaseModel().id))
+        self.assertNotEqual(base1.id, base2.id)
+        self.assertTrue(isinstance(base1.created_at, datetime))
+        self.assertTrue(isinstance(base2.updated_at, datetime))
+        base1.name = "tests"
+        self.assertEqual(base1.name, "tests")
+        self.assertTrue(type(base1.to_dict()), dict)
