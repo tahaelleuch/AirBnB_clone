@@ -1,16 +1,18 @@
 #!/usr/bin/python3
+"""
+testeur pour la classe BaseModel
+"""
 import datetime
 import unittest
 import uuid
 import models
 from models.base_model import BaseModel
-"""
-testeur pour la classe BaseModel
-"""
 
 
 class testbase(unittest.TestCase):
+    """ descriptiond du test"""
     def test_attributes(self):
+        """verification des attributs"""
     base1 = BaseModel()
     base2 = BaseModel()
     self.assertTrue(isinstance(base1, BaseModel))
