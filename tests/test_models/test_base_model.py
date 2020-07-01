@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 
 
 class testbase(unittest.TestCase):
-    """ descriptiond du test"""
+    """ descriptiond du tests"""
     def test_attributes(self):
         """verification des attributs"""
     base1 = BaseModel()
@@ -20,6 +20,6 @@ class testbase(unittest.TestCase):
     self.assertNotEqual(base1.id, base2.id)
     self.assertTrue(isinstance(base1.created_at, datetime))
     self.assertTrue(isinstance(base2.updated_at, datetime))
-    base1.name = "test"
-    self.assertEqual(base1.name, "test")
+    base1.name = "tests"
+    self.assertEqual(base1.name, "tests")
     self.assertTrue(type(base1.to_dict()), dict)
