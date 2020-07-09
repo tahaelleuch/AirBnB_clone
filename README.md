@@ -1,5 +1,5 @@
 # AirBnB_clone
-Command interpreter to manage the AirBnB objects
+Command interpreter to manage the AirBnB objects.
 ### About this project
 The AirBnB_clone is the first step to build our first full web application.
 it's a cammand interpreter to manipulate data (input and storing) without an interface or with black interface(like in a shell)
